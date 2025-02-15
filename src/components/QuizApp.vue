@@ -162,8 +162,9 @@ const incorrectOrMissingAnswers = computed(() => {
               <span v-else>No answer</span>
           </p>
           <p v-if="answers.multipleChoiceAnswers[index] !== question.answer && !question.draggableOptions" class="text-gray-600">Correct answer: {{ question.answer }}</p>
-          <p v-if="question.draggableOptions" class="text-gray-600">Correct answer: 
-            <div  v-for="(pair, i) in incorrectOrMissingAnswers.find(q => q.questionId === question.id).incorrectPairs || []"
+          <p v-if="question.draggableOptions && incorrectOrMissingAnswers.find(q => q.questionId === question.id)?.incorrectPairs" class="text-gray-600">
+            Correct answer: 
+            <div  v-for="(pair, i) in incorrectOrMissingAnswers.find(q => q.questionId === question.id)?.incorrectPairs || []"
             :key="i" class="grid grid-cols-3 gap-4 mb-2">
               <span class="font-semibold place-self-start">{{ pair.value }}</span>
               <span class="text-gray-500 place-self-center">→</span>
