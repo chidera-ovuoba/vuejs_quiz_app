@@ -12,6 +12,7 @@ export default defineConfig({
     vueDevTools(),
     tailwindcss(),
   ],
+  base:'vuejs_quiz_app',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
